@@ -1,0 +1,61 @@
+/* Website template by # */
+/*------------------------- Layout styles ------------------------*/
+.page{
+	background: url(../images/ie6/bg-page.jpg) no-repeat -1px 0;
+}
+
+/*-------------------------	Header --------------------------*/
+.header div#model img{
+	margin-left: 2px;
+}
+.header p {
+    padding: 13px 24px 10px 30px;
+}
+.header div#model{
+	margin:16px 0 0;
+	padding: 4px 7px 7px 8px;
+}
+.header {
+	height: 1%;
+}
+
+/*-------------------------	Body --------------------------*/
+.body {
+    background: url(../images/ie6/divider.jpg) no-repeat scroll 2px 2px;
+}
+
+.body div{
+	background: url(../images/ie6/divider.jpg) no-repeat scroll 2px 2px;
+}
+.body ul li{
+	margin-right: 23px;
+}
+#body div {
+    margin: 0 0 82px;
+}
+#body div ul {
+    padding: 0 0 0 20px;
+	margin-bottom: -2px;
+}
+#body div div#address {
+    margin: 0 0 -2px 0; 
+}
+#body div.section{
+	background:url(../images/ie6/divider.jpg) no-repeat 2px 1px;
+}
+#body div ul li {
+    margin: 0 0 95px;
+    overflow: hidden;
+    padding: 0;
+}
+
+/*-------------------------	Footer --------------------------*/
+.footer{
+	background: url(../images/ie6/bg-footer.jpg) no-repeat scroll 2px 0;
+}
+.footer div {
+   margin-left: 20px;
+}
+.footer p#footnote{
+	margin: -60px 0 0;
+}
