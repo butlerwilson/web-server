@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# Thiis is script to get configuration from server.conf file.
+# After getting the result, we redirect it to the include/config.h.
+#
+
+dest_file="curr_file"
+include_head="config.h"
+
+echo -e "/*\n* This is a header file, which contains the server's config file.\n * Every limit can effect the server's serve, So you mustn't beyond the limits.\n*/\n\n" > $dest_file
+
+cat ./server.conf | while read line
+do	
+	echo "$line" > /tmp/aabb
+	res=`awk '{printf $1}' /tmp/aabb`
+	if [ "$res" != "#" ]; then
+		echo "$line" > /tmp/aabb
+		param=`awk '{printf $1}' /tmp/aabb`
+		echo "#ifndef $param" >> $dest_file
+		echo  -n -e  "\t#define" >> $dest_file
+		echo -e  "$line"  >> $dest_file
+	fi
+	rm -f /tmp/aabb
+done
+mv $dest_file $include_head
+rm -f $dest_file

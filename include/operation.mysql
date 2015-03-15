@@ -1,0 +1,12 @@
+# The operation about my makefriends databases
+
+/*create table register
+(mail char(30) primary key, password char(16) not null);
+
+# grant the privillage to the user
+grant insert, drop on yxtest.register to public;
+*/
+
+# create the login table
+create table login
+(mail char(30) primary key, password char(16) not null);
