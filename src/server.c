@@ -20,8 +20,11 @@
 
 #include "mysql_oper.h"
 
+<<<<<<< HEAD
 #include "message.h"
 
+=======
+>>>>>>> origin/master
 // return errors to the broswer
 void response_error_to_client(int cfd, int errno)
 {
@@ -36,6 +39,7 @@ void response_error_to_client(int cfd, int errno)
 		switch (errno) {
 			// request page not found 404
 			case 1:
+<<<<<<< HEAD
 				errbuf= err_404;
 				filename = page_404;
 				break;
@@ -48,6 +52,20 @@ void response_error_to_client(int cfd, int errno)
 			case 3:
 				errbuf = err_405;
 				filename = page_405;
+=======
+				errbuf= "HTTP/1.1 404 Not Found\n";
+				filename = "../www/_404.html";
+				break;
+			// request forbiden 403
+			case 2:
+				errbuf = "HTTP/1.1 403 Resquest forbiden\n";
+				filename = "../www/_403.html";
+				break;
+			// unknow method 405
+			case 3:
+				errbuf = "HTTP/1.1 405 unknow method\n";
+				filename = "../www/_405.html";
+>>>>>>> origin/master
 				break;
 			// file too large
 			case 4:
@@ -56,18 +74,31 @@ void response_error_to_client(int cfd, int errno)
 			// unsuport mime type
 			case 6:
 			// unsuport http protocol
+<<<<<<< HEAD
 				errbuf = err_505;
 				filename = page_505;
 				break;
 			default:
 				errbuf= err_404;
 				filename = page_404;
+=======
+				errbuf = "HTTP/1.1 505 Unsupport http protocol\n";
+				filename = "../www/_505.html";
+				break;
+			default:
+				errbuf= "HTTP/1.1 404 Not Found\n";
+				filename = "../www/_404.html";
+>>>>>>> origin/master
 		}
 		strncpy(http_head_failed, errbuf, strlen(errbuf));
 		fd = open(filename, O_RDONLY);
 		res = fstat(fd, &st);
 		if ((fd == -1) || (res == -1))
+<<<<<<< HEAD
 			strcpy(file_buff, err_fatal);
+=======
+			strcpy(file_buff, "<html><p>Fatel Error!</p><h>No reponse! please check your request.</h></html>");
+>>>>>>> origin/master
 		else
 			read(fd, file_buff, res);
 		if (pthread_mutex_init(&lp, NULL) == 0) {
@@ -310,7 +341,14 @@ void *deal_request_from_client(void *cfd)
 	memset(buff, '\0', sizeof(buff));
 	if (read(*fd, buff, sizeof(buff))) {
 		buff[RECV_BUFF_SIZE - 1] = '\0';
+<<<<<<< HEAD
 		get_client_request(buff, client_cmd, *fd);
+=======
+//time_t curtime = time(NULL);
+//printf("Current time: %s\n", ctime(&curtime));
+		get_client_request(buff, client_cmd, *fd);
+fprintf(stdout, "Browser request:%s\n", buff);
+>>>>>>> origin/master
 		deal_request_from_user(client_cmd);
 		response_to_client(*fd, client_cmd);
 	}

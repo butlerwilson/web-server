@@ -1,7 +1,11 @@
 USER_RESOURCE = ./src/server.c
 BIN_PATH = ./bin/
 LIB_PATH = ./lib/
+<<<<<<< HEAD
 INCLUDE_PATH= ./include
+=======
+INCLUDE_PATH= /home/young/Learner/applications/BS/server/include
+>>>>>>> origin/master
 DESTINATION = server
 LIB_CODE = server.o
 
